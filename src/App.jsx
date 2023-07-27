@@ -1,115 +1,105 @@
+import { useState } from 'react'
 import './App.css'
+import Step1 from './components/Step1'
+import Step2 from './components/Step2'
+import Step3 from './components/Step3'
+import Step4 from './components/Step4'
 
 function App() {
+  const [step, setStep] = useState(1)
+  const [formData, setFormData] = useState({
+    personalInfo: {
+      name: "",
+      email: "",
+      phone: ""
+    },
+    plan: {
+      planName: '',
+      isYearly: false
+    },
+    addons: {
+      service: false,
+      storage: false,
+      customProfile: false
+    }
+  })
+
+  function handleValueChange(stepName, valueName, value){
+    setFormData(prev => ({...prev, [stepName]: {...prev[stepName], [valueName]: value} }))
+  }
+
+  console.log(formData)
+
+  function renderStep() {
+    console.log(step)
+    switch(step) {
+      case 1:
+        return <Step1 formData={formData} step={'personalInfo'} handleValueChange={handleValueChange}/>;
+      case 2:
+        return <Step2 formData={formData} step={'plan'} handleValueChange={handleValueChange}/>;
+      case 3:
+        return <Step3 formData={formData} step={'addons'} handleValueChange={handleValueChange}/>;
+      case 4:
+        return <Step4 />;
+      default:
+        return <Step1 />;
+    }
+  }
+
+  function nextStep(){
+    setStep(prev => prev+1)
+  }
+
+  function prevStep(){
+    setStep(prev => prev-1)
+  }
 
   return (
     <>
-      {/* <!-- Sidebar start --> */}
+      <main>
+        <section className='sidebar'>
+          <div className='step-item'>
+            <div className={`step-number ${step == 1 ? "active" : ""}`}>1</div>
+            <div className='step-text'>
+              <p className='sidebar-step-title'>Step 1</p>
+              <p className='sidebar-step-description'>Your info</p>
+            </div>
+          </div>
+          <div className='step-item'>
+            <div className={`step-number ${step == 2 ? "active" : ""}`}>2</div>
+            <div className='step-text'>
+              <p className='sidebar-step-title'>Step 2</p>
+              <p className='sidebar-step-description'>Select plan</p>
+            </div>
+          </div>
+          <div className='step-item'>
+            <div className={`step-number ${step == 3 ? "active" : ""}`}>3</div>
+            <div className='step-text'>
+              <p className='sidebar-step-title'>Step 3</p>
+              <p className='sidebar-step-description'>Add-ons</p>
+            </div>
+          </div>
+          <div className='step-item'>
+            <div className={`step-number ${step == 4 ? "active" : ""}`}>4</div>
+            <div className='step-text'>
+              <p className='sidebar-step-title'>Step 4</p>
+              <p className='sidebar-step-description'>Summary</p>
+            </div>
+          </div>
+        </section>
+        <section className='step-section'>
+          {renderStep()}
+          <div className='step-buttons-container'>
+            {step > 1 &&<button onClick={prevStep}>Go back</button>}
+            <button onClick={nextStep} className='next-step-btn'>Next Step</button>
+          </div>
+        </section>
 
-Step 1
-Your info
-
-Step 2
-Select plan
-
-Step 3
-Add-ons
-
-Step 4
-Summary
-
-{/* <!-- Sidebar end --> */}
-
-{/* <!-- Step 1 start --> */}
-
-Personal info
-Please provide your name, email address, and phone number.
-
-Name
-e.g. Stephen King
-
-Email Address
-e.g. stephenking@lorem.com
-
-Phone Number
-e.g. +1 234 567 890
-
-Next Step
-
-{/* <!-- Step 1 end --> */}
-
-{/* <!-- Step 2 start --> */}
-
-Select your plan
-You have the option of monthly or yearly billing.
-
-Arcade
-$9/mo
-
-Advanced
-$12/mo
-
-Pro
-$15/mo
-
-Monthly
-Yearly
-
-Go Back
-Next Step
-
-{/* <!-- Step 2 end --> */}
-
-{/* <!-- Step 3 start --> */}
-
-Pick add-ons
-Add-ons help enhance your gaming experience.
-
-Online service
-Access to multiplayer games
-+$1/mo
-
-Larger storage
-Extra 1TB of cloud save
-+$2/mo
-
-Customizable Profile
-Custom theme on your profile
-+$2/mo
-
-Go Back
-Next Step
-
-{/* <!-- Step 3 end --> */}
-
-{/* <!-- Step 4 start --> */}
-
-Finishing up
-Double-check everything looks OK before confirming.
-
-{/* <!-- Dynamically add subscription and add-on selections here --> */}
-
-Total (per month/year)
-
-Go Back
-Confirm
-
-{/* <!-- Step 4 end --> */}
-
-{/* <!-- Step 5 start --> */}
-
-Thank you!
-
-Thanks for confirming your subscription! We hope you have fun 
-using our platform. If you ever need support, please feel free 
-to email us at support@loremgaming.com.
-
-{/* <!-- Step 5 end --> */}
-
-<div className="attribution">
-  Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-  Coded by <a href="#">Your Name Here</a>.
-</div>
+      </main>
+      <div className="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="#">Your Name Here</a>.
+      </div>
     </>
   )
 }
