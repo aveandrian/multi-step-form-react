@@ -44,6 +44,18 @@ main {
   gap: 20px;
 }
 
+.next-step-btn {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+}
+
+.prev-step-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+}
+
 .step-item {
   display: flex;
   align-items: center;
@@ -89,7 +101,7 @@ main {
   margin-top: auto;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
+  padding-inline: 20px;
 }
 
 .next-step-btn {
@@ -121,4 +133,65 @@ main {
   border-radius: 5px;
   border: 1px solid grey;
   text-indent: 10px;
+}
+
+
+.plan-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+}
+
+.plan-cards-wrapper {
+  display: flex;
+  gap: 1vw;
+}
+
+.plan-card {
+  flex: 1;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  border-radius: 10px;
+  padding: 20px 10px;
+  border: 1px solid black;
+}
+
+.plan-icon {
+  margin-bottom: auto;
+}
+
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  border:  1px solid black;
+  padding: 20px;
+}
+
+.slider {
+  width: 50px;
+  height: 25px;
+  border-radius: 30px;
+  padding: 5px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+
+.slider-circle {
+  height: 15px;
+  width: 15px;
+  border: 1px solid black;
+  border-radius: 50%;
+  position: relative;
+  left: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.slider-circle.yearly {
+  left: 100%;
+  transform: translateX(-100%);
 }

@@ -90,7 +90,7 @@ function App() {
         <section className='step-section'>
           {renderStep()}
           <div className='step-buttons-container'>
-            {step > 1 &&<button onClick={prevStep}>Go back</button>}
+            {step > 1 &&<button onClick={prevStep} className='prev-step-btn'>Go back</button>}
             <button onClick={nextStep} className='next-step-btn'>Next Step</button>
           </div>
         </section>
