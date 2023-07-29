@@ -149,7 +149,8 @@ main {
 
 .plan-card {
   flex: 1;
-  height: 20vh;
+  min-height: 20vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -159,7 +160,7 @@ main {
 }
 
 .plan-icon {
-  margin-bottom: auto;
+  margin-bottom: 5vh;
 }
 
 .slider-wrapper {
@@ -195,3 +196,46 @@ main {
   left: 100%;
   transform: translateX(-100%);
 }
+
+.addons-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh
+}
+
+.addon-item {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  padding: 20px 30px ;
+  border: 1px solid black;
+}
+
+.addon-title {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.addon-selector {
+  height: 20px;
+  width: 20px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.addon-selector.selected::after {
+  content: "✓";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addon-price {
+  margin-left: auto;
+}
+

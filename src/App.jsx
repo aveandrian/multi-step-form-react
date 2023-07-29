@@ -21,7 +21,7 @@ function App() {
       service: false,
       storage: false,
       customProfile: false
-    }
+    },
   })
 
   function handleValueChange(stepName, valueName, value){
@@ -40,7 +40,7 @@ function App() {
       case 3:
         return <Step3 formData={formData} step={'addons'} handleValueChange={handleValueChange}/>;
       case 4:
-        return <Step4 />;
+        return <Step4 formData={formData}/>;
       default:
         return <Step1 />;
     }

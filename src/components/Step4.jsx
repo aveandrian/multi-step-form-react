@@ -2,15 +2,20 @@
 export default function Step4(){
     return (
     <>
-        <h1>Step4</h1>
-        Finishing up
-Double-check everything looks OK before confirming.
-{/* <!-- Dynamically add subscription and add-on selections here --> */}
+     <div className="step-container">
+        <h1 className="step-title">Finishing up</h1>
+        <p className="step-description">Double-check everything looks OK before confirming.</p>
+        
+        <div className="step-content summary-content">
+            {/* <!-- Dynamically add subscription and add-on selections here --> */}
 
-Total (per month/year)
+            Total (per month/year)
 
-Go Back
-Confirm
+        </div>
+    </div>
+        
+
+
     </>
     )
 }

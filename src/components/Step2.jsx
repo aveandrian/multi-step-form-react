@@ -20,16 +20,19 @@ export default function Step2(props){
                     <img className="plan-icon" src='src\assets\images\icon-arcade.svg' />
                     <h2 className="plan-title">Arcade</h2>
                     <p className="plan-price">$9/mo</p>
+                    {props.formData.plan.isYearly && <p className="plan-bonus">2 months free</p>}
                 </div>
                 <div className={`plan-card ${props.formData.plan.planName == "advanced" ? "active" : ""}`} name="advanced" onClick={handlePlanSelect}>
                     <img className="plan-icon" src='src\assets\images\icon-advanced.svg' />
                     <h2 className="plan-title">Advanced</h2>
                     <p className="plan-price">$12/mo</p>
+                    {props.formData.plan.isYearly && <p className="plan-bonus">2 months free</p>}
                 </div>
                 <div className={`plan-card ${props.formData.plan.planName == "pro" ? "active" : ""}`} name="pro" onClick={handlePlanSelect}>
                     <img className="plan-icon" src='src\assets\images\icon-pro.svg' />
                     <h2 className="plan-title">Pro</h2>
                     <p className="plan-price">$15/mo</p>
+                    {props.formData.plan.isYearly && <p className="plan-bonus">2 months free</p>}
                 </div>
             </div>
             <div className="slider-wrapper">
