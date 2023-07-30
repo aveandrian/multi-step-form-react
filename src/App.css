@@ -206,7 +206,7 @@ main {
 .plan-content {
   display: flex;
   flex-direction: column;
-  gap: 3vh;
+  gap: 2vh;
 }
 
 .plan-cards-wrapper {
@@ -555,7 +555,7 @@ main {
   }
 
   .plan-content {
-    gap: 2vh;
+    gap: 1vh;
   }
 
   .plan-cards-wrapper {

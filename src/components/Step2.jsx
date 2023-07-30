@@ -1,16 +1,21 @@
+import { useState } from "react"
 
 export default function Step2(props){
+    const [error, setError] = useState(null)
+
     function handlePlanSelect(name){
+        setError(null)
         props.handleValueChange(props.step, 'planName', name)
     }
 
     function togglePlan(){
+        setError(null)
         props.handleValueChange(props.step, 'isYearly', !props.formData.plan.isYearly)
     }
 
     function handleSubmit(){
         if(props.formData.plan.planName == "")
-            return
+            return setError("Please select a plan")
         else props.nextStep()
     }
 
@@ -47,6 +52,7 @@ export default function Step2(props){
                     </div>
                 </div>
             </div>
+            {error && <p className="error">{error}</p>}
             <div className="slider-wrapper">
                 <p className={props.formData.plan.isYearly ? "" : "active"}>Monthly</p>
                 <div className="slider" onClick={togglePlan}>
