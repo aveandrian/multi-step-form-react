@@ -25,5 +25,7 @@ Users should be able to:
   - A step is submitted, but no selection has been made
 
 ### Screenshot
+![image](https://github.com/aveandrian/multi-step-form-react/assets/13519212/527dcb5a-d3a3-4210-a7ed-2b21911710a1)
+
 
 ![](./screenshot.jpg)
