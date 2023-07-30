@@ -57,10 +57,7 @@ function App() {
     setFormData(prev => ({...prev, [stepName]: {...prev[stepName], [valueName]: value} }))
   }
 
-  console.log(formData)
-
   function renderStep() {
-    console.log(step)
     switch(step) {
       case 1:
         return <Step1 formData={formData} step={'personalInfo'} handleValueChange={handleValueChange} nextStep={nextStep}/>;
