@@ -1,11 +1,17 @@
 
 export default function Step2(props){
-    function handlePlanSelect(e){
-        props.handleValueChange(props.step, 'planName', e.target.getAttribute('name'))
+    function handlePlanSelect(name){
+        props.handleValueChange(props.step, 'planName', name)
     }
 
     function togglePlan(){
         props.handleValueChange(props.step, 'isYearly', !props.formData.plan.isYearly)
+    }
+
+    function handleSubmit(){
+        if(props.formData.plan.planName == "")
+            return
+        else props.nextStep()
     }
 
     return (
@@ -16,32 +22,42 @@ export default function Step2(props){
 
         <div className="step-content plan-content">
             <div className="plan-cards-wrapper">
-                <div className={`plan-card ${props.formData.plan.planName == "arcade" ? "active" : ""}`} name="arcade" onClick={handlePlanSelect}>
+                <div className={`plan-card ${props.formData.plan.planName == "arcade" ? "active" : ""}`}  onClick={()=>handlePlanSelect('arcade')}>
                     <img className="plan-icon" src='src\assets\images\icon-arcade.svg' />
-                    <h2 className="plan-title">Arcade</h2>
-                    <p className="plan-price">$9/mo</p>
-                    {props.formData.plan.isYearly && <p className="plan-bonus">2 months free</p>}
+                    <div className="plan-info">
+                        <h2 className="plan-title">Arcade</h2>
+                        <p className="plan-price">${props.formData.plan.isYearly ? props.prices.arcade*10 : props.prices.arcade}/{props.formData.plan.isYearly ? "yr" : "mo"}</p>
+                        {props.formData.plan.isYearly && <p className="plan-bonus">2 months free</p>}
+                    </div>
                 </div>
-                <div className={`plan-card ${props.formData.plan.planName == "advanced" ? "active" : ""}`} name="advanced" onClick={handlePlanSelect}>
+                <div className={`plan-card ${props.formData.plan.planName == "advanced" ? "active" : ""}`} onClick={()=>handlePlanSelect('advanced')}>
                     <img className="plan-icon" src='src\assets\images\icon-advanced.svg' />
-                    <h2 className="plan-title">Advanced</h2>
-                    <p className="plan-price">$12/mo</p>
-                    {props.formData.plan.isYearly && <p className="plan-bonus">2 months free</p>}
+                    <div className="plan-info">
+                        <h2 className="plan-title">Advanced</h2>
+                        <p className="plan-price">${props.formData.plan.isYearly ? props.prices.advanced*10 : props.prices.advanced}/{props.formData.plan.isYearly ? "yr" : "mo"}</p>
+                        {props.formData.plan.isYearly && <p className="plan-bonus">2 months free</p>}
+                    </div>
                 </div>
-                <div className={`plan-card ${props.formData.plan.planName == "pro" ? "active" : ""}`} name="pro" onClick={handlePlanSelect}>
+                <div className={`plan-card ${props.formData.plan.planName == "pro" ? "active" : ""}`} onClick={()=>handlePlanSelect('pro')}>
                     <img className="plan-icon" src='src\assets\images\icon-pro.svg' />
-                    <h2 className="plan-title">Pro</h2>
-                    <p className="plan-price">$15/mo</p>
-                    {props.formData.plan.isYearly && <p className="plan-bonus">2 months free</p>}
+                    <div className="plan-info">
+                        <h2 className="plan-title">Pro</h2>
+                        <p className="plan-price">${props.formData.plan.isYearly ? props.prices.pro*10 : props.prices.pro}/{props.formData.plan.isYearly ? "yr" : "mo"}</p>
+                        {props.formData.plan.isYearly && <p className="plan-bonus">2 months free</p>}
+                    </div>
                 </div>
             </div>
             <div className="slider-wrapper">
-                <p>Monthly</p>
+                <p className={props.formData.plan.isYearly ? "" : "active"}>Monthly</p>
                 <div className="slider" onClick={togglePlan}>
                     <div className={`slider-circle ${props.formData.plan.isYearly ? "yearly" : ""}`}></div>
                 </div>
-                <p>Yearly</p>
+                <p className={props.formData.plan.isYearly ? "active" : ""}>Yearly</p>
             </div>
+        </div>
+        <div className='step-buttons-container' >
+            <button onClick={props.prevStep} className='prev-step-btn'>Go back</button>
+            <button onClick={handleSubmit} className='next-step-btn'>Next Step</button>
         </div>
     </div>
 

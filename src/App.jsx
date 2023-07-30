@@ -1,12 +1,26 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Step1 from './components/Step1'
 import Step2 from './components/Step2'
 import Step3 from './components/Step3'
 import Step4 from './components/Step4'
+import Step5 from './components/Step5'
+
+const planMonthlyPrices = {
+  arcade: 9,
+  advanced: 12,
+  pro: 15
+}
+
+const addonMonthlyPrices = {
+  service: 1,
+  storage: 2,
+  customProfile: 2
+}
 
 function App() {
   const [step, setStep] = useState(1)
+  const [total, setTotal] = useState(0)
   const [formData, setFormData] = useState({
     personalInfo: {
       name: "",
@@ -24,6 +38,21 @@ function App() {
     },
   })
 
+  useEffect(()=> {
+    let totalPrice = formData.plan.isYearly ? planMonthlyPrices[formData.plan.planName]*10 : planMonthlyPrices[formData.plan.planName]
+    for (let key in formData.addons) {
+      if(formData.addons[key]){
+        let addonPrice = formData.plan.isYearly ? addonMonthlyPrices[key]*10 : addonMonthlyPrices[key]
+        totalPrice+=addonPrice
+      }
+    }
+    setTotal(totalPrice)
+  }, [formData.plan, formData.addons])
+  
+  function handleChangeStep(number){ 
+    setStep(number)
+  }
+
   function handleValueChange(stepName, valueName, value){
     setFormData(prev => ({...prev, [stepName]: {...prev[stepName], [valueName]: value} }))
   }
@@ -34,13 +63,15 @@ function App() {
     console.log(step)
     switch(step) {
       case 1:
-        return <Step1 formData={formData} step={'personalInfo'} handleValueChange={handleValueChange}/>;
+        return <Step1 formData={formData} step={'personalInfo'} handleValueChange={handleValueChange} nextStep={nextStep}/>;
       case 2:
-        return <Step2 formData={formData} step={'plan'} handleValueChange={handleValueChange}/>;
+        return <Step2 formData={formData} step={'plan'} handleValueChange={handleValueChange} nextStep={nextStep} prevStep={prevStep} prices={planMonthlyPrices}/>;
       case 3:
-        return <Step3 formData={formData} step={'addons'} handleValueChange={handleValueChange}/>;
+        return <Step3 formData={formData} step={'addons'} handleValueChange={handleValueChange} nextStep={nextStep} prevStep={prevStep} prices={addonMonthlyPrices}/>;
       case 4:
-        return <Step4 formData={formData}/>;
+        return <Step4 formData={formData} handleChangeStep={handleChangeStep} nextStep={nextStep} prevStep={prevStep} total={total} planMonthlyPrices={planMonthlyPrices} addonMonthlyPrices={addonMonthlyPrices} />;
+      case 5:
+        return <Step5 formData={formData} handleChangeStep={handleChangeStep} nextStep={nextStep} prevStep={prevStep} />;
       default:
         return <Step1 />;
     }
@@ -80,7 +111,7 @@ function App() {
             </div>
           </div>
           <div className='step-item'>
-            <div className={`step-number ${step == 4 ? "active" : ""}`}>4</div>
+            <div className={`step-number ${step > 3 ? "active" : ""}`}>4</div>
             <div className='step-text'>
               <p className='sidebar-step-title'>Step 4</p>
               <p className='sidebar-step-description'>Summary</p>
@@ -89,16 +120,12 @@ function App() {
         </section>
         <section className='step-section'>
           {renderStep()}
-          <div className='step-buttons-container'>
-            {step > 1 &&<button onClick={prevStep} className='prev-step-btn'>Go back</button>}
-            <button onClick={nextStep} className='next-step-btn'>Next Step</button>
-          </div>
         </section>
 
       </main>
       <div className="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-        Coded by <a href="#">Your Name Here</a>.
+        Coded by <a href="https://github.com/aveandrian">aveandrian</a>.
       </div>
     </>
   )

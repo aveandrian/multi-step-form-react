@@ -8,6 +8,7 @@
 
 body {
   min-height: 100vh;
+  background: #EEF5FF;
 }
 
 #root {
@@ -23,37 +24,41 @@ main {
   height: 80vh;
   display: flex;
   gap: 2vw;
-  border:  1px solid black;
   padding: 20px;
   border-radius: 20px;
+  background: white;
 }
 
 .step-container, .personal-info-content {
-  border:  1px solid black;
   display: flex;
   flex-direction: column;
 }
 
 .sidebar {
-  border:  1px solid black;
   width: 35%;
   padding: 20px;
+  padding-block: 40px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
+  background: url('src/assets/images/bg-sidebar-desktop.svg');
+  background-size: cover;
 }
 
 .next-step-btn {
   padding: 15px 30px;
   border: none;
   border-radius: 5px;
+  font-weight: 500;
 }
 
 .prev-step-btn {
+  font-weight: 500;
   background: transparent;
   border: none;
   font-size: 16px;
+  color: hsl(231, 11%, 63%)
 }
 
 .step-item {
@@ -64,12 +69,20 @@ main {
 
 .step-number {
   border-radius: 50%;
-  border: 1px solid black;
+  border: 1px solid white;
+  color: white;
   width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 700;
+}
+
+.step-number.active {
+  color: hsl(213, 96%, 18%);
+  background-color:  #BDE1FF;
+  border: none;
 }
 
 .step-text {
@@ -79,11 +92,13 @@ main {
 
 .sidebar-step-title {
   text-transform: uppercase;
+  color: hsl(229, 24%, 87%);
 }
 
 .sidebar-step-description {
   text-transform: uppercase;
   font-weight: 700;
+  color: white;
 }
 
 .step-section {
@@ -95,6 +110,8 @@ main {
 
 .step-container {
   padding: 50px 20px ;
+  padding-bottom: 20px;
+  height: 100%;
 }
 
 .step-buttons-container {
@@ -105,14 +122,38 @@ main {
 }
 
 .next-step-btn {
+  background: #03295A;
+  color: white;
   margin-left: auto;
+}
+
+.next-step-btn:hover, .prev-step-btn:hover {
+  cursor: pointer;
+}
+
+.next-step-btn:hover {
+  background-color: #174A8B;
+}
+
+.next-step-btn.confirm {
+  background-color: #483EFF;
+}
+
+.next-step-btn.confirm:hover {
+  background-color: #938CFE;
+}
+
+.prev-step-btn:hover {
+  color: #03295A;
 }
 
 .step-title {
   font-size: 2rem;
+  color: hsl(213, 96%, 18%);
 }
 
 .step-description {
+  color: hsl(231, 11%, 63%);
   font-size: 1.1rem;
   margin-bottom: 4vh;
 }
@@ -126,13 +167,39 @@ main {
 .input-wrapper {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+
+.input-label-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .input-wrapper input {
   height: 50px;
   border-radius: 5px;
-  border: 1px solid grey;
+  border: 1px solid hsl(231, 11%, 63%);
   text-indent: 10px;
+  font-weight: 500;
+  color: hsl(213, 96%, 18%);
+}
+
+.input-wrapper input:focus {
+  outline: 1px solid blue;
+}
+ 
+.input-wrapper input.input-error {
+  border: 1px solid red;
+}
+
+.input-label-container label {
+  color: hsl(213, 96%, 18%);
+}
+
+.error {
+  color: red;
+  font-weight: 700;
 }
 
 
@@ -152,15 +219,45 @@ main {
   min-height: 20vh;
   height: fit-content;
   display: flex;
+  gap: 5px;
   flex-direction: column;
   align-items: start;
   border-radius: 10px;
   padding: 20px 10px;
-  border: 1px solid black;
+  border: 1px solid hsl(231, 11%, 63%);
+}
+
+.plan-card.active {
+  background-color: #F8F9FE;
+  border: 1px solid hsl(213, 96%, 18%);
+}
+
+.plan-card:hover {
+  cursor: pointer;
+  border: 1px solid hsl(213, 96%, 18%);
 }
 
 .plan-icon {
   margin-bottom: 5vh;
+}
+
+.plan-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.plan-title {
+  color: hsl(213, 96%, 18%);;
+}
+
+.plan-price {
+  color: hsl(231, 11%, 63%);
+}
+
+.plan-bonus {
+  font-weight: 500;
+  color: hsl(213, 96%, 18%);;
 }
 
 .slider-wrapper {
@@ -168,8 +265,19 @@ main {
   align-items: center;
   justify-content: center;
   gap: 1vw;
-  border:  1px solid black;
   padding: 20px;
+  border-radius: 10px;
+  background: #F8F9FE;
+  font-weight: 700;
+}
+
+
+.slider-wrapper p {
+  color: hsl(231, 11%, 63%);
+}
+
+.slider-wrapper p.active {
+  color: hsl(213, 96%, 18%);
 }
 
 .slider {
@@ -177,15 +285,20 @@ main {
   height: 25px;
   border-radius: 30px;
   padding: 5px;
-  border: 1px solid black;
+  background: #03295A;
   display: flex;
   align-items: center;
 }
 
+.slider:hover {
+  cursor: pointer;
+}
+
+
 .slider-circle {
   height: 15px;
   width: 15px;
-  border: 1px solid black;
+  background-color: white;
   border-radius: 50%;
   position: relative;
   left: 0;
@@ -208,34 +321,298 @@ main {
   align-items: center;
   gap: 1vw;
   padding: 20px 30px ;
-  border: 1px solid black;
+  border-radius: 10px;
+  border: 1px solid hsl(231, 11%, 63%);
+}
+
+.addon-item.selected {
+  background-color: #F8F9FE;
+  border: 1px solid #4C4299;
+}
+
+.addon-item:hover {
+  cursor: pointer;
+  border: 1px solid #4C4299;
 }
 
 .addon-title {
   font-weight: 700;
   font-size: 18px;
+  color: hsl(213, 96%, 18%);
+}
+
+.addon-text {
+  color: hsl(231, 11%, 63%);
 }
 
 .addon-selector {
   height: 20px;
   width: 20px;
-  border: 1px solid black;
+  border: 1px solid hsl(231, 11%, 63%);
   position: relative;
-}
-
-.addon-selector.selected::after {
-  content: "✓";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.addon-selector .check-icon {
+  display: none;
+}
+
+.addon-selector.selected {
+  background-color: #443EFF;
+  border: none;
+}
+
+.addon-selector.selected .check-icon {
+  display: block;
+  color: white;
+}
+
 .addon-price {
+  color: #4C4299;
   margin-left: auto;
 }
 
+.summary-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #F8F9FE;
+  border-radius: 10px;
+}
+
+.summary-subscription {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.summary-subscription-title, .summary-subscription-price {
+  font-weight: 700;
+  color: hsl(213, 96%, 18%);
+}
+
+.summary-subscription-title::first-letter {
+  text-transform: uppercase;
+}
+
+.summary-subscription-change {
+  text-decoration: underline;
+  color: hsl(231, 11%, 63%);
+} 
+
+.summary-subscription-change:hover {
+  cursor: pointer;
+  color: hsl(213, 96%, 18%);
+}
+
+.summary-addon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.summary-divider {
+  width: 100%;
+  height: 1px;
+  background-color: hsl(231, 11%, 63%);
+}
+
+.summary-addons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.summary-addon-price {
+  color: #174A8B;
+}
+
+.total {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.summary-addon-title, .total-title {
+  color: hsl(231, 11%, 63%);
+}
+
+.total-price {
+  font-size: 21px;
+  font-weight: 700;
+  color: #443EFF;
+}
+
+.final-step-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  padding: 30px;
+}
+
+.final-step-icon {
+  margin-bottom: 4vh;
+}
+
+.final-step-title {
+  font-size: 2rem;
+  margin-bottom: 2vh;
+  color: hsl(213, 96%, 18%);
+}
+
+.final-step-text {
+  font-size: 17px;
+  line-height: 1.5em;
+  color: hsl(231, 11%, 63%);
+}
+
+.attribution, .attribution a {
+  margin-top: 3vh;
+  color: hsl(231, 11%, 63%);
+  text-align: center;
+}
+.attribution a:hover {
+  cursor: pointer;
+  color: hsl(213, 96%, 18%);
+}
+
+
+@media screen and (max-width: 950px) {
+  body {
+   
+  }
+  #root {
+    position: relative;
+    justify-content: start;
+  }
+
+  .attribution {
+    display: none;
+  }
+
+  main {
+    background: url('src/assets/images/bg-sidebar-mobile.svg') no-repeat;
+    background-position: 0 0;
+    background-size: 100% auto;
+    flex-direction: column;
+    width: 100%;
+    background-color: #EEF5FF;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  .sidebar {
+    background: none;
+    width: 100%;
+    height: 10vh;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-block: 10px;
+    gap: 10px;
+  }
+  .step-text {
+    display: none;
+  }
+
+  .step-content {
+    height: fit-content;
+  }
+
+  .step-container {
+    padding: 0;
+    background-color: white;
+    height: fit-content;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .step-title {
+    font-size: 1.5rem;
+  }
+  .step-description {
+    font-size: 0.8rem;
+  }
+
+  .step-buttons-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-block: 20px;
+    background-color: white;
+  }
+
+  .next-step-btn {
+    padding: 10px 20px;
+  }
+
+  .plan-content {
+    gap: 2vh;
+  }
+
+  .plan-cards-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: 1vh;
+    margin: 0;
+  }
+  
+
+  .slider-wrapper {
+    margin: 0;
+  }
+
+  .plan-card  {
+    flex-direction: row;
+    align-items: center;
+    min-height: fit-content;
+    padding: 20px;
+    padding-block: 15px;
+    gap: 3vw;
+  }
+
+  .plan-icon {
+    margin: 0;
+  }
+
+  .plan-info {
+    gap: 1vh
+  }
+
+  .plan-title {
+    font-size: 1rem;
+  }
+
+  .addon-item {
+    padding: 20px;
+    padding-inline: 10px;
+    gap: 10px;
+  }
+
+  .addon-title {
+    font-size: 1rem;
+  }
+
+  .final-step-content {
+    background-color: white;
+    border-radius: 10px;
+    /* padding-inline: 50 px; */
+  }
+
+  .final-step-text {
+    font-size: 0.87rem;
+  }
+
+}
