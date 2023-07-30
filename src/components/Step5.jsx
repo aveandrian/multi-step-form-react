@@ -2,7 +2,7 @@
 export default function Step5(){
     return (
     <div className="final-step-content">
-        <img className="final-step-icon" src="src/assets/images/icon-thank-you.svg" /> 
+        <img className="final-step-icon" src="src/assets/images/icon-thank-you.svg" alt="Finished icon" /> 
         <h1 className="final-step-title">Thank you!</h1>
         <p className="final-step-text">
             Thanks for confirming your subscription! We hope you have fun 

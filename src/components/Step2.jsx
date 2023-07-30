@@ -23,7 +23,7 @@ export default function Step2(props){
         <div className="step-content plan-content">
             <div className="plan-cards-wrapper">
                 <div className={`plan-card ${props.formData.plan.planName == "arcade" ? "active" : ""}`}  onClick={()=>handlePlanSelect('arcade')}>
-                    <img className="plan-icon" src='src\assets\images\icon-arcade.svg' />
+                    <img className="plan-icon" src='src\assets\images\icon-arcade.svg'  alt="Plan icon"/>
                     <div className="plan-info">
                         <h2 className="plan-title">Arcade</h2>
                         <p className="plan-price">${props.formData.plan.isYearly ? props.prices.arcade*10 : props.prices.arcade}/{props.formData.plan.isYearly ? "yr" : "mo"}</p>
@@ -31,7 +31,7 @@ export default function Step2(props){
                     </div>
                 </div>
                 <div className={`plan-card ${props.formData.plan.planName == "advanced" ? "active" : ""}`} onClick={()=>handlePlanSelect('advanced')}>
-                    <img className="plan-icon" src='src\assets\images\icon-advanced.svg' />
+                    <img className="plan-icon" src='src\assets\images\icon-advanced.svg'  alt="Plan icon" />
                     <div className="plan-info">
                         <h2 className="plan-title">Advanced</h2>
                         <p className="plan-price">${props.formData.plan.isYearly ? props.prices.advanced*10 : props.prices.advanced}/{props.formData.plan.isYearly ? "yr" : "mo"}</p>
@@ -39,7 +39,7 @@ export default function Step2(props){
                     </div>
                 </div>
                 <div className={`plan-card ${props.formData.plan.planName == "pro" ? "active" : ""}`} onClick={()=>handlePlanSelect('pro')}>
-                    <img className="plan-icon" src='src\assets\images\icon-pro.svg' />
+                    <img className="plan-icon" src='src\assets\images\icon-pro.svg' alt="Plan icon" />
                     <div className="plan-info">
                         <h2 className="plan-title">Pro</h2>
                         <p className="plan-price">${props.formData.plan.isYearly ? props.prices.pro*10 : props.prices.pro}/{props.formData.plan.isYearly ? "yr" : "mo"}</p>
